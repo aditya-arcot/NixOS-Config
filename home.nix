@@ -1,6 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, vscode-server, ... }:
 
 {
+  imports = [
+    "${vscode-server}/modules/vscode-server/home.nix"
+  ];
+
   home.username = "adityaarcot";
   home.homeDirectory = "/home/adityaarcot";
 
@@ -30,6 +34,8 @@
   };
 
   services.ssh-agent.enable = true;
+
+  services.vscode-server.enable = true;
 
   programs.zsh.enable = true;
 }
