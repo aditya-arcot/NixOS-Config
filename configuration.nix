@@ -55,6 +55,7 @@
 
     programs.firefox.enable = true;
     programs.dconf.enable = true;
+    programs.zsh.enable = true;
 
     environment.systemPackages = with pkgs; [
         vim
@@ -67,10 +68,10 @@
         idleTime=0
     '';
 
+    users.defaultUserShell = pkgs.zsh;
     users.users.adityaarcot = {
         isNormalUser = true;
         extraGroups = [ "wheel" ];
-        shell = pkgs.bash;
     };
 
     # do not change - https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
