@@ -35,6 +35,7 @@
 
     home.packages = with pkgs; [
         nixfmt
+        gnumake
     ];
 
     services.ssh-agent.enable = true;

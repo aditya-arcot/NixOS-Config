@@ -11,8 +11,7 @@ Personal NixOS configuration using flakes and Home Manager.
 
 ## Usage
 
-Build and activate the system:
-
 ```sh
-sudo nixos-rebuild switch --flake .#nixos
+make rebuild-boot
+make rebuild-switch
 ```
