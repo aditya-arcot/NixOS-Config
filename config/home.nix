@@ -82,6 +82,7 @@ in
                 "autoupdate"
                 "colored-man-pages"
                 "fast-syntax-highlighting"
+                "git"
             ];
             custom = "${zsh-customs}";
         };
