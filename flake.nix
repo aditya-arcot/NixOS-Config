@@ -17,22 +17,27 @@
             home-manager,
             ...
         }:
-        {
-            nixosConfigurations = {
-                nixos = nixpkgs.lib.nixosSystem {
+        let
+            makeHost =
+                { hostName }:
+                nixpkgs.lib.nixosSystem {
                     system = "x86_64-linux";
                     specialArgs = { inherit inputs; };
                     modules = [
-                        ./configuration.nix
+                        (./hosts + "/${hostName}/configuration.nix")
                         grub2-themes.nixosModules.default
                         home-manager.nixosModules.home-manager
                         {
                             home-manager.useGlobalPkgs = true;
                             home-manager.useUserPackages = true;
-                            home-manager.users.adityaarcot = import ./home.nix;
+                            home-manager.users.adityaarcot = import ./config/home.nix;
                         }
                     ];
                 };
+        in
+        {
+            nixosConfigurations = {
+                desktop = makeHost { hostName = "desktop"; };
             };
         };
 }
