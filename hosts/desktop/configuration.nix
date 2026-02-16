@@ -44,6 +44,10 @@
 
     networking.hostName = "nixos";
     networking.networkmanager.enable = true;
+    networking.interfaces.eno1.wakeOnLan = {
+        enable = true;
+        policy = [ "magic" ];
+    };
 
     time.timeZone = "America/Chicago";
 
@@ -60,6 +64,8 @@
 
     environment.systemPackages = with pkgs; [
         curl
+        ethtool
+        grub2
         nixfmt
         vim
         wget

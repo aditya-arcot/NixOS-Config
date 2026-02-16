@@ -73,3 +73,38 @@ alias password='openssl rand -hex 32'
 alias strip_ansi='sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,3})*)?[mGK]//g"'
 ### ALIASES ###
 
+
+### BOOT HELPERS ###
+grub_menuentry_by_label() {
+	local label="$1"
+	sudo grep "$label" /boot/grub/grub.cfg | cut -d '"' -f 2 | head -n 1
+}
+
+windows_reboot() {
+	local entry
+	entry=$(grub_menuentry_by_label "Windows")
+	if [[ -z "$entry" ]]; then
+		echo "Windows GRUB entry not found"
+		return 1
+	fi
+    echo "Booting into Windows GRUB entry"
+	sudo grub-reboot "$entry" && sudo reboot
+}
+
+arch_reboot() {
+	local entry
+	entry=$(grub_menuentry_by_label "Arch Linux")
+	if [[ -z "$entry" ]]; then
+		echo "Arch Linux GRUB entry not found"
+		return 1
+	fi
+    echo "Booting into Arch Linux GRUB entry"
+	sudo grub-reboot "$entry" && sudo reboot
+}
+
+bios_reboot ()
+{
+    echo "Rebooting into BIOS/UEFI settings"
+    sudo systemctl reboot --firmware-setup
+}
+### BOOT HELPERS ###
