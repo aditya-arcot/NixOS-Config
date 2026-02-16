@@ -1,0 +1,57 @@
+[user]
+	name = aditya-arcot
+	email = dev@aarcot.com
+[core]
+	autocrlf = input
+	excludesfile = /Users/adityaarcot/.config/git/.gitignore
+	fsmonitor = true
+	untrackedCache = true
+	hooksPath = /Users/adityaarcot/.config/git/hooks
+[pull]
+	rebase = true
+[init]
+	defaultbranch = main
+[alias]
+	s = status
+	a = add
+	l = log
+	cm = commit -m
+	cnm = commit --no-verify -m
+	lg = log --oneline --graph --all --decorate
+	alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | grep -v ^'alias '
+[help]
+	autocorrect = prompt
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[push]
+	autoSetupRemote = true
+	followTags = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[commit]
+	verbose = true
+[rerere]
+	enabled = true
+	autoupdate = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[filter "nbstripout"]
+	extrakeys = \n    metadata.kernelspec\n    metadata.language_info.version\n
