@@ -57,6 +57,7 @@ in
     home.file.".gitconfig".source = ./gitconfig;
 
     programs.home-manager.enable = true;
+    programs.gcc.enable = true;
     programs.git.enable = true;
     programs.ssh = {
         enable = true;
