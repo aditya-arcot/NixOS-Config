@@ -1,0 +1,46 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+    "logo": {
+        "type": "none",
+    },
+    "modules": [
+        "break",
+        "title",
+        "separator",
+        "os",
+        "host",
+        "uptime",
+        {
+            "type": "command",
+            "key": "OS Age",
+            "text": "echo $(( ($(date +%s) - $(gstat -c %W /)) / 86400 )) days",
+        },
+        "separator",
+        "terminal",
+        "shell",
+        "packages",
+        "separator",
+        {
+            "type": "localip",
+            "showMac": true,
+            "showPrefixLen": true,
+            "compact": false,
+        },
+        {
+            "type": "disk",
+            "showSubvolumes": true,
+            "showUnknown": true,
+        },
+        {
+            "type": "cpu",
+            "temp": true,
+        },
+        {
+            "type": "gpu",
+            "temp": true,
+        },
+        "memory",
+        "battery",
+        "break",
+    ],
+}

@@ -8,7 +8,6 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        vscode-server.url = "github:nix-community/nixos-vscode-server";
     };
 
     outputs =
@@ -16,7 +15,6 @@
             nixpkgs,
             grub2-themes,
             home-manager,
-            vscode-server,
             ...
         }:
         {
@@ -31,9 +29,6 @@
                         {
                             home-manager.useGlobalPkgs = true;
                             home-manager.useUserPackages = true;
-                            home-manager.extraSpecialArgs = {
-                                vscode-server = inputs.vscode-server;
-                            };
                             home-manager.users.adityaarcot = import ./home.nix;
                         }
                     ];

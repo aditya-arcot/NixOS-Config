@@ -58,9 +58,10 @@
     programs.zsh.enable = true;
 
     environment.systemPackages = with pkgs; [
+        curl
+        nixfmt
         vim
         wget
-        curl
     ];
     # disable suspend
     environment.etc."xdg/powermanagementprofilesrc".text = ''
