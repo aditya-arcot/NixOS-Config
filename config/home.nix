@@ -1,9 +1,11 @@
 {
     config,
     pkgs,
+    inputs,
     ...
 }:
 let
+    nvim-config = inputs.nvim-config;
     autoupdate = pkgs.fetchFromGitHub {
         owner = "tamcore";
         repo = "autoupdate-oh-my-zsh-plugins";
@@ -55,6 +57,7 @@ in
     home.file.".config/eza/theme.yml".source = ./eza.theme.yml;
     home.file.".config/fastfetch/config.jsonc".source = ./fastfetch.config.jsonc;
     home.file.".gitconfig".source = ./gitconfig;
+    home.file.".config/nvim".source = nvim-config;
 
     programs.home-manager.enable = true;
     programs.gcc.enable = true;
@@ -70,6 +73,7 @@ in
             };
         };
     };
+    programs.neovim.enable = true;
     programs.zoxide.enable = true;
     programs.zsh = {
         enable = true;

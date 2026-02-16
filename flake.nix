@@ -8,6 +8,10 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        nvim-config = {
+            url = "github:aditya-arcot/Neovim-Config";
+            flake = false;
+        };
     };
 
     outputs =
@@ -31,6 +35,7 @@
                             home-manager.useGlobalPkgs = true;
                             home-manager.useUserPackages = true;
                             home-manager.users.adityaarcot = import ./config/home.nix;
+                            home-manager.extraSpecialArgs = { inherit inputs; };
                         }
                     ];
                 };

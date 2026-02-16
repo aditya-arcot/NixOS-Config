@@ -70,11 +70,28 @@
                 "type": "github"
             }
         },
+        "nvim-config": {
+            "flake": false,
+            "locked": {
+                "lastModified": 1770916360,
+                "narHash": "sha256-MeCAMav8YfPofXbuUE6SBmbcdsgw+SphA+iksyUoD/w=",
+                "owner": "aditya-arcot",
+                "repo": "Neovim-Config",
+                "rev": "1ae3476362a5001dc557a67f36096e7d7169c25b",
+                "type": "github"
+            },
+            "original": {
+                "owner": "aditya-arcot",
+                "repo": "Neovim-Config",
+                "type": "github"
+            }
+        },
         "root": {
             "inputs": {
                 "grub2-themes": "grub2-themes",
                 "home-manager": "home-manager",
-                "nixpkgs": "nixpkgs_2"
+                "nixpkgs": "nixpkgs_2",
+                "nvim-config": "nvim-config"
             }
         }
     },
