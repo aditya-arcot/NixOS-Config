@@ -50,17 +50,14 @@ in
         gnumake
         meslo-lgs-nf
     ];
+    home.file.".p10k.zsh".source = ./.p10k.zsh;
+    home.file.".config/zsh/.zshrc".source = ./.zshrc;
     home.file.".config/eza/theme.yml".source = ./eza.theme.yml;
     home.file.".config/fastfetch/config.jsonc".source = ./fastfetch.config.jsonc;
-    home.file.".config/zsh/.zshrc".source = ./.zshrc;
-    home.file.".p10k.zsh".source = ./.p10k.zsh;
+    home.file.".gitconfig".source = ./gitconfig;
 
     programs.home-manager.enable = true;
-    programs.git = {
-        enable = true;
-        settings.user.name = "aditya-arcot";
-        settings.user.email = "dev@aarcot.com";
-    };
+    programs.git.enable = true;
     programs.ssh = {
         enable = true;
         enableDefaultConfig = false;
