@@ -57,7 +57,15 @@
     users.defaultUserShell = pkgs.zsh;
     users.users.adityaarcot = {
         isNormalUser = true;
-        extraGroups = [ "wheel" ];
+        extraGroups = [
+            "wheel"
+            "docker"
+        ];
+    };
+
+    virtualisation.docker = {
+        enable = true;
+        enableOnBoot = true;
     };
 
     hardware.firmware = [
