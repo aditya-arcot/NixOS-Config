@@ -42,7 +42,7 @@
     };
     boot.loader.efi.canTouchEfiVariables = true;
 
-    networking.hostName = "nixos";
+    networking.hostName = "desktop";
     networking.networkmanager.enable = true;
     networking.interfaces.eno1.wakeOnLan = {
         enable = true;
