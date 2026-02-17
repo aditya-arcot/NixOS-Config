@@ -19,7 +19,12 @@
     boot.loader.efi.canTouchEfiVariables = false;
 
     networking.hostName = "mbp-t2";
-    networking.networkmanager.enable = true;
+    # required for wifi to work on boot
+    networking.wireless.enable = true;
+    networking.wireless.interfaces = [ "wlp229s0" ];
+    networking.wireless.extraConfigFiles = [ "/etc/wpa_supplicant/wpa_supplicant.conf" ];
+    # mutually exclusive with wpa_supplicant
+    networking.networkmanager.enable = false;
 
     time.timeZone = "America/Chicago";
 
