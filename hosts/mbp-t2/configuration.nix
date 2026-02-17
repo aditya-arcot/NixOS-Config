@@ -28,6 +28,7 @@
 
     time.timeZone = "America/Chicago";
 
+    services.envfs.enable = true;
     services.xserver.enable = true;
     services.xserver.xkb.layout = "us";
     services.displayManager.sddm.enable = true;
