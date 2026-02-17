@@ -1,7 +1,13 @@
 .PHONY: rebuild
 
-rebuild-boot:
-	sudo nixos-rebuild boot --flake .#deskop
+rebuild-boot-desktop:
+	sudo nixos-rebuild boot --flake .#desktop
 
-rebuild-switch:
+rebuild-switch-desktop:
 	sudo nixos-rebuild switch --flake .#desktop
+
+rebuild-boot-mbp-t2:
+	sudo nixos-rebuild boot --flake .#mbp-t2
+
+rebuild-switch-mbp-t2:
+	sudo nixos-rebuild switch --flake .#mbp-t2

@@ -3,6 +3,7 @@
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+        nixos-hardware.url = "github:NixOS/nixos-hardware";
         grub2-themes.url = "github:vinceliuice/grub2-themes";
         home-manager = {
             url = "github:nix-community/home-manager";
@@ -17,13 +18,17 @@
     outputs =
         inputs@{
             nixpkgs,
+            nixos-hardware,
             grub2-themes,
             home-manager,
             ...
         }:
         let
             makeHost =
-                { hostName }:
+                {
+                    hostName,
+                    extraModules ? [ ],
+                }:
                 nixpkgs.lib.nixosSystem {
                     system = "x86_64-linux";
                     specialArgs = { inherit inputs; };
@@ -37,12 +42,19 @@
                             home-manager.users.adityaarcot = import ./config/home.nix;
                             home-manager.extraSpecialArgs = { inherit inputs; };
                         }
-                    ];
+                    ]
+                    ++ extraModules;
                 };
         in
         {
             nixosConfigurations = {
                 desktop = makeHost { hostName = "desktop"; };
+                mbp-t2 = makeHost {
+                    hostName = "mbp-t2";
+                    extraModules = [
+                        nixos-hardware.nixosModules.apple-t2
+                    ];
+                };
             };
         };
 }
