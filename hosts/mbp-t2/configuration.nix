@@ -33,6 +33,11 @@
     services.displayManager.sddm.enable = true;
     services.desktopManager.plasma6.enable = true;
     services.openssh.enable = true;
+    services.logind.settings.Login = {
+        HandleLidSwitch = "ignore";
+        HandleLidSwitchDocked = "ignore";
+        HandleHibernateKey = "ignore";
+    };
 
     programs.firefox.enable = true;
     programs.dconf.enable = true;
@@ -47,14 +52,6 @@
         vim
         wget
     ];
-    # disable suspend
-    environment.etc."xdg/powermanagementprofilesrc".text = ''
-        [AC][SuspendSession]
-        idleTime=0
-
-        [Battery][SuspendSession]
-        idleTime=0
-    '';
 
     users.defaultUserShell = pkgs.zsh;
     users.users.adityaarcot = {
@@ -73,6 +70,13 @@
             '';
         })
     ];
+
+    systemd.sleep.extraConfig = ''
+        AllowSuspend=no
+        AllowHibernation=no
+        AllowHybridSleep=no
+        AllowSuspendThenHibernate=no
+    '';
 
     # do not change - https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
     system.stateVersion = "25.11";
