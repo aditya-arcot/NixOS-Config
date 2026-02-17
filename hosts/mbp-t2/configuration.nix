@@ -28,20 +28,20 @@
 
     time.timeZone = "America/Chicago";
 
-    services.envfs.enable = true;
-    services.xserver.enable = true;
-    services.xserver.xkb.layout = "us";
-    services.displayManager.sddm.enable = true;
     services.desktopManager.plasma6.enable = true;
-    services.openssh.enable = true;
+    services.displayManager.sddm.enable = true;
+    services.envfs.enable = true;
     services.logind.settings.Login = {
         HandleLidSwitch = "ignore";
         HandleLidSwitchDocked = "ignore";
         HandleHibernateKey = "ignore";
     };
+    services.openssh.enable = true;
+    services.xserver.enable = true;
+    services.xserver.xkb.layout = "us";
 
-    programs.firefox.enable = true;
     programs.dconf.enable = true;
+    programs.firefox.enable = true;
     programs.nix-ld.enable = true;
     programs.zsh.enable = true;
 

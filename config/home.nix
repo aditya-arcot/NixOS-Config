@@ -43,9 +43,9 @@ in
         }/modules/vscode-server/home.nix"
     ];
 
+    home.stateVersion = "25.11";
     home.username = "adityaarcot";
     home.homeDirectory = "/home/adityaarcot";
-    home.stateVersion = "25.11";
     home.packages = with pkgs; [
         eza
         fastfetch

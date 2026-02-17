@@ -51,17 +51,22 @@
 
     time.timeZone = "America/Chicago";
 
+    services.desktopManager.plasma6.enable = true;
+    services.displayManager.sddm.enable = true;
+    services.openssh.enable = true;
     services.xserver.enable = true;
     services.xserver.xkb.layout = "us";
-    services.displayManager.sddm.enable = true;
-    services.desktopManager.plasma6.enable = true;
-    services.openssh.enable = true;
 
-    programs.firefox.enable = true;
     programs.dconf.enable = true;
+    programs.firefox.enable = true;
     programs.nix-ld.enable = true;
     programs.zsh.enable = true;
 
+    # disable suspend
+    environment.etc."xdg/powermanagementprofilesrc".text = ''
+        [AC][SuspendSession]
+        idleTime=0
+    '';
     environment.systemPackages = with pkgs; [
         curl
         ethtool
@@ -70,11 +75,6 @@
         vim
         wget
     ];
-    # disable suspend
-    environment.etc."xdg/powermanagementprofilesrc".text = ''
-        [AC][SuspendSession]
-        idleTime=0
-    '';
 
     users.defaultUserShell = pkgs.zsh;
     users.users.adityaarcot = {
