@@ -14,6 +14,7 @@
         "nix-command"
         "flakes"
     ];
+    nixpkgs.config.allowUnfree = true;
 
     boot.loader.systemd-boot.enable = false;
     boot.loader.grub.enable = true;
@@ -70,6 +71,7 @@
     environment.systemPackages = with pkgs; [
         curl
         ethtool
+        google-chrome
         grub2
         nixfmt
         vim
