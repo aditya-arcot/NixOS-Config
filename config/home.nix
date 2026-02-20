@@ -49,6 +49,7 @@ in
     home.packages = with pkgs; [
         eza
         fastfetch
+        fzf
         gnumake
         meslo-lgs-nf
     ];
@@ -87,6 +88,7 @@ in
                 "autoupdate"
                 "colored-man-pages"
                 "fast-syntax-highlighting"
+                "fzf"
                 "git"
             ];
             custom = "${zsh-customs}";
